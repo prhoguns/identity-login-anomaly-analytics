@@ -26,21 +26,21 @@ hourly=con.execute(f'''SELECT dataset_day,hour_of_day,COUNT(*) logons,
 hourly['day']=hourly['dataset_day'].map(lambda d:f'Day {d}')
 left,right=st.columns(2)
 left.plotly_chart(px.line(hourly,x='hour_of_day',y='failures',color='day',markers=True,
- title='Failed logons by hour'),use_container_width=True)
+ title='Failed logons by hour'),width='stretch')
 right.plotly_chart(px.bar(hourly,x='hour_of_day',y='logons',color='day',barmode='group',
- title='Logon volume by hour'),use_container_width=True)
+ title='Logon volume by hour'),width='stretch')
 types=con.execute(f'''SELECT logon_type_description,COUNT(*) logons,
  100.0*AVG(failure::INT) failure_pct FROM auth_enriched WHERE {where}
  GROUP BY 1 ORDER BY logons DESC LIMIT 8''').df()
 st.plotly_chart(px.bar(types,x='logon_type_description',y='failure_pct',hover_data=['logons'],
- title='Failure rate by logon type'),use_container_width=True)
+ title='Failure rate by logon type'),width='stretch')
 st.subheader('Investigation queues')
 tab1,tab2=st.tabs(['Failure bursts','New day-2 user–host pairs'])
 with tab1:
     st.dataframe(con.execute((ROOT/'sql/08_user_failure_bursts.sql').read_text()).df(),
-     use_container_width=True,hide_index=True)
+     width='stretch',hide_index=True)
 with tab2:
     st.dataframe(con.execute((ROOT/'sql/10_new_user_host_pairs.sql').read_text()).df(),
-     use_container_width=True,hide_index=True)
+     width='stretch',hide_index=True)
 st.caption('Times are relative seconds and day indices, not calendar dates. New means unseen in day 1 only. The mirror fills missing source/destination fields with LogHost; rankings are investigation leads, not confirmed attacks.')
 con.close()
