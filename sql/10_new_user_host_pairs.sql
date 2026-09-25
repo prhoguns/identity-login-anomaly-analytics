@@ -1,0 +1,2 @@
+-- Which day-2 user-destination pairs were absent on day 1?
+WITH known AS (SELECT DISTINCT user_name,destination FROM auth_enriched WHERE dataset_day=1 AND success), new_pairs AS (SELECT user_name,destination,COUNT(*) logons FROM auth_enriched a WHERE dataset_day=2 AND success AND NOT EXISTS (SELECT 1 FROM known k WHERE k.user_name=a.user_name AND k.destination=a.destination) GROUP BY 1,2) SELECT * FROM new_pairs ORDER BY logons DESC LIMIT 30;

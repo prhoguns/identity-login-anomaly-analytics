@@ -1,0 +1,10 @@
+# Which reported reasons accompany failed logons?
+
+| failure_reason | failures |
+| --- | --- |
+| Unknown user name or bad password. | 101417 |
+| An Error occured during Logon. | 57872 |
+| The user has not been granted the requested logon type at this machine. | 4278 |
+| Account locked out. | 3211 |
+| Account currently disabled. | 644 |
+| The specified account's password has expired. | 15 |

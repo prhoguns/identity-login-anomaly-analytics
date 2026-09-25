@@ -1,0 +1,2 @@
+-- How complete are user, source, destination, and logon type fields?
+SELECT dataset_day,COUNT(*) logons,COUNT(*) FILTER (WHERE user_name IS NULL OR user_name='') missing_user,COUNT(*) FILTER (WHERE src IS NULL OR src='') missing_source,COUNT(*) FILTER (WHERE destination IS NULL OR destination='') missing_destination,COUNT(*) FILTER (WHERE logon_type_description IS NULL OR logon_type_description='') missing_logon_type FROM auth_enriched GROUP BY 1 ORDER BY 1;

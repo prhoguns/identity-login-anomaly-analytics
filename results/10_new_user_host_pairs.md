@@ -1,0 +1,34 @@
+# Which day-2 user-destination pairs were absent on day 1?
+
+| user_name | destination | logons |
+| --- | --- | --- |
+| User717119 | Comp658422 | 7191 |
+| User059846 | Comp658422 | 6565 |
+| User672215 | Comp704126 | 5489 |
+| User992494 | Comp805594 | 5305 |
+| User587067 | Comp401202 | 5172 |
+| User909058 | Comp327612 | 4778 |
+| User713733 | EnterpriseAppServer | 4336 |
+| User790443 | Comp337732 | 3978 |
+| User870779 | Comp704126 | 3776 |
+| User792011 | Comp805594 | 3775 |
+| User830397 | Comp256596 | 3644 |
+| User291064 | Comp704126 | 3421 |
+| User145813 | Comp479002 | 3241 |
+| User344976 | Comp256596 | 2962 |
+| User565668 | Comp479002 | 2851 |
+| User442292 | Comp256596 | 2821 |
+| User347112 | Comp805594 | 2620 |
+| User799148 | Comp256596 | 2514 |
+| User273618 | ActiveDirectory | 2503 |
+| User649816 | Comp805594 | 2393 |
+| User126990 | Comp704126 | 2380 |
+| User643059 | Comp805594 | 2103 |
+| User128538 | Comp704126 | 2010 |
+| User097083 | Comp876177 | 1968 |
+| User787171 | Comp156925 | 1697 |
+| User643059 | Comp479002 | 1584 |
+| User127987 | EnterpriseAppServer | 1573 |
+| User655741 | Comp876177 | 1518 |
+| User152391 | Comp256596 | 1513 |
+| User619172 | Comp193128 | 1457 |

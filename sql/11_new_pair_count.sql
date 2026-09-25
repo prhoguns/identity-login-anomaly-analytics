@@ -1,0 +1,2 @@
+-- How many day-2 user-destination pairs are new relative to day 1?
+WITH day1 AS (SELECT DISTINCT user_name,destination FROM auth_enriched WHERE dataset_day=1 AND success), day2 AS (SELECT DISTINCT user_name,destination FROM auth_enriched WHERE dataset_day=2 AND success) SELECT COUNT(*) day2_pairs,COUNT(*) FILTER (WHERE day1.user_name IS NULL) new_pairs,ROUND(100.0*COUNT(*) FILTER (WHERE day1.user_name IS NULL)/COUNT(*),2) new_pair_pct FROM day2 LEFT JOIN day1 USING(user_name,destination);
