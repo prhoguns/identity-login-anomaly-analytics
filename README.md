@@ -1,8 +1,14 @@
 # Identity and Login Anomaly SQL Analytics
 
+[![CI](https://github.com/prhoguns/identity-login-anomaly-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/prhoguns/identity-login-anomaly-analytics/actions/workflows/ci.yml)
+
 Eighteen SQL questions and an interactive dashboard over anonymized User-prefixed account Windows logon events from the [LANL Unified Host and Network Dataset](https://csr.lanl.gov/data/2017/). The project investigates failure bursts, failure-then-success windows, user–host novelty, device fanout, overnight activity, and logon-type changes.
 
+**Headline:** 29.91% of day-2 successful user→destination pairs (13,870 of 46,370) never appeared on day 1, so a one-day baseline would flag a large share of normal access as new.
+
 **Start with:** [Findings](FINDINGS.md) · [SQL questions](sql/) · [Results](results/) · [Dashboard screenshot](screenshots/dashboard.png)
+
+CI runs all eighteen queries on every push against a small synthetic fixture with the real schema ([`scripts/make_fixture.py`](scripts/make_fixture.py)); the results in this repository come from the real data, downloaded locally.
 
 ![Failed logons by hour](charts/hourly_failures.png)
 

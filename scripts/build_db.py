@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import duckdb
 
@@ -23,6 +24,7 @@ con.execute('''CREATE OR REPLACE VIEW auth_enriched AS SELECT *,
  src<>destination remote_logon
  FROM auth_events''')
 count,fail=con.execute('SELECT COUNT(*),SUM(failure::INT) FROM auth_enriched').fetchone()
-assert count>1000000 and 0<fail<count,(count,fail)
+min_rows=int(os.getenv('MIN_ROWS','1000000'))  # CI lowers this for the synthetic fixture
+assert count>min_rows and 0<fail<count,(count,fail)
 print(f'{count:,} User-prefixed account logon events; {fail:,} failed; database: {db}')
 con.close()
